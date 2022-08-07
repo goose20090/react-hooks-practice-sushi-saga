@@ -1,14 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import SushiContainer from "./SushiContainer";
 import Table from "./Table";
 
-const API = "http://localhost:3001/sushis";
-
 function App() {
+  const [money, setMoney]= useState(85)
+  const [plates, setPlates]= useState([])
+
+  function handleClick(){
+    setPlates([...plates, 0])
+    
+  }
+  
   return (
     <div className="app">
-      <SushiContainer />
-      <Table />
+      <SushiContainer handleClick= {handleClick} money = {money} setMoney = {setMoney}/>
+      <Table money = {money} plates = {plates}/>
     </div>
   );
 }
